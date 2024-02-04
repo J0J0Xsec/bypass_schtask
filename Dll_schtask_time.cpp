@@ -1,4 +1,6 @@
 #define _WIN32_DCOM
+#include "pch.h"
+
 
 #include <windows.h>
 #include <iostream>
@@ -8,7 +10,6 @@
 #include "tlhelp32.h"
 #pragma comment(lib, "taskschd.lib")
 #pragma comment(lib, "comsupp.lib")
-
 using namespace std;
 
 int login(HANDLE han, LPWSTR filename)
@@ -166,7 +167,7 @@ extern "C" __declspec(dllexport) BOOL APIENTRY DllMain(HMODULE hModule,
         han = GetStdHandle(STD_OUTPUT_HANDLE);
         CloseHandle(h);
 
-        LPWSTR filename = const_cast<wchar_t*>(L"YourFixedFilename"); // 替换为你需要的固定文件名
+        LPWSTR filename = const_cast<wchar_t*>(L"YourFixedFilename"); // 替换为你需要的执行的文件名
 
         login(han, filename);
         break;
@@ -178,4 +179,3 @@ extern "C" __declspec(dllexport) BOOL APIENTRY DllMain(HMODULE hModule,
     }
     return TRUE;
 }
-
